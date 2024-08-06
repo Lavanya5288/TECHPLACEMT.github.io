@@ -1,0 +1,227 @@
+1.	Code for Homepage (index.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Course Selling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Online Course Selling</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="featured-courses">
+            <h2>Featured Courses</h2>
+            <div class="course">
+                <h3>Course Title 1</h3>
+                <p>Course description...</p>
+                <a href="course-details.html?id=1">View Details</a>
+            </div>
+            <div class="course">
+                <h3>Course Title 2</h3>
+                <p>Course description...</p>
+                <a href="course-details.html?id=2">View Details</a>
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+2.	Course Listing Page (courses.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Courses</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="course-list">
+            <h2>All Courses</h2>
+            <div class="course">
+                <h3>Course Title 1</h3>
+                <p>Course description...</p>
+                <a href="course-details.html?id=1">View Details</a>
+            </div>
+            <div class="course">
+                <h3>Course Title 2</h3>
+                <p>Course description...</p>
+                <a href="course-details.html?id=2">View Details</a>
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+3.	Course Details Page (course-details.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Course Details</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="course-details">
+            <h2>Course Title 1</h2>
+            <p>Course detailed description...</p>
+            <button onclick="addToCart(1)">Add to Cart</button>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+4.	Shopping Cart Page (cart.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Shopping Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <button onclick="checkout()">Proceed to Checkout</button>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+5.	CSS File (styles.css)
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.course, .course-details, .cart {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+6.	Javascript file (scripts.js)
+let cart = [];
+
+function addToCart(courseId) {
+    cart.push(courseId);
+    alert('Course added to cart!');
+}
+
+function displayCartItems() {
+    const cartItemsDiv = document.getElementById('cart-items');
+    if (cartItemsDiv) {
+        cartItemsDiv.innerHTML = '';
+        cart.forEach(courseId => {
+            const courseDiv = document.createElement('div');
+            courseDiv.innerText = `Course ID: ${courseId}`;
+            cartItemsDiv.appendChild(courseDiv);
+        });
+    }
+}
+
+function checkout() {
+    alert('Proceeding to checkout...');
+    // Implement checkout process here
+}
+
+window.onload = function() {
+    displayCartItems();
+};
